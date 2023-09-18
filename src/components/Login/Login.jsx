@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,39 +12,40 @@ const Login = () => {
     // por ejemplo, enviar los datos al servidor.
   };
 
-  const handleRegister = () => {
-    // Aquí puedes agregar la lógica para redirigir a la página de registro
-    // o mostrar un formulario de registro en el mismo componente.
-    alert("Redirect to registration page or show registration form");
-  };
-
   return (
-    <div className="login-container">
+    <div className="container">
+      <div className="logo2">
+        <img src="./store-logo.png" alt="" />
+      </div>
       <form onSubmit={handleSubmit} className="login-form">
-        <h2>Login</h2>
+        <h1>Login to Your Acount</h1>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="username"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="password"
           />
         </div>
-        <button type="submit">Login</button>
-        <p className="register-link" onClick={handleRegister}>
-          Register
-        </p>
+        <button type="submit">Sign In</button>
       </form>
+      <div className="if-new">
+        <h1>New Here?</h1>
+        <p>Sign up and discover our delicious products</p>
+        <Link to="/register">
+          <button className="special-button">Sign Up</button>
+        </Link>
+      </div>
     </div>
   );
 };
