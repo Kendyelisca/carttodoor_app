@@ -1,10 +1,14 @@
+import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-
+import "./cart.css";
 const Cart = () => {
   return (
     <>
       <Navbar />
-      <div>Buying products goes here.</div>
+      <div className="cart-container">
+        <p>Buying products goes here.</p>
+      </div>
+      <Footer />
     </>
   );
 };
