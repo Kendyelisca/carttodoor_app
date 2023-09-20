@@ -2,12 +2,13 @@
 .container {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
-.logo2 {
-    position: absolute;
-    width: 170px;
-  height: 130px;
+.logo2 img {
+  position: absolute;
+  width: 100px;
+  height: 80px;
 }
 
 .login-form {

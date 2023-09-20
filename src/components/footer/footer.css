@@ -1,0 +1,8 @@
+.footer-content {
+  width: 100vw;
+  background-color: gray;
+}
+
+.footer-content p {
+  text-align: center;
+}

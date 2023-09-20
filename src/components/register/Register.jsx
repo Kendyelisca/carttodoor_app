@@ -15,7 +15,9 @@ const Register = () => {
   return (
     <div className="register-container">
       <div className="logo3">
-        <img src="./store-logo.png" />
+        <Link to="/">
+          <img src="./store-logo.png" />
+        </Link>
       </div>
       <div className="if-notNew">
         <h1>Welcome back!</h1>

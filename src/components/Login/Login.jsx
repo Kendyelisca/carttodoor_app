@@ -15,7 +15,9 @@ const Login = () => {
   return (
     <div className="container">
       <div className="logo2">
-        <img src="./store-logo.png" alt="" />
+        <Link to="/">
+          <img src="./store-logo.png" />
+        </Link>
       </div>
       <form onSubmit={handleSubmit} className="login-form">
         <h1>Login to Your Acount</h1>
