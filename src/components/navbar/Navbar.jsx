@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { PiShoppingCart } from "react-icons/pi";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { CgProfile } from "react-icons/cg";
 const Navbar = () => {
   return (
     <div className="navbar">
@@ -23,14 +26,14 @@ const Navbar = () => {
             <a href="#contact">Contact</a>
           </li>
         </ul>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-        </ul>
+        <Link to="/cart" className="cart">
+          <PiShoppingCart />
+        </Link>
+        <div className="profile-container"> </div>{" "}
+        <Link to="/login" className="profile">
+          <RxHamburgerMenu />
+          <CgProfile />
+        </Link>
       </nav>
     </div>
   );

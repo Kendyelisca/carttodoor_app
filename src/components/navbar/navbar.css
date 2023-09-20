@@ -8,10 +8,38 @@
   background-color: rgb(245, 246, 248);
 }
 
+.cart {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  color: rgb(102, 102, 102);
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 20px;
+  color: rgb(102, 102, 102);
+  box-shadow: 2px 2px 2px gray;
+  height: 35px;
+  max-width: 150px;
+  padding: 0 20px;
+  margin-top: 15px;
+}
+
+.profile-container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 nav {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
+  justify-content: space-around;
+  border-bottom: 1px solid rgb(225, 215, 215);
   height: 70px;
 
 }
@@ -32,6 +60,7 @@ ul {
 
 ul li a {
   text-decoration: none;
+  color: rgb(102, 102, 102);;
 }
 
 .bar {
