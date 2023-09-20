@@ -1,8 +1,39 @@
 .footer-content {
   width: 100vw;
-  background-color: gray;
+  background-color: rgb(245, 246, 248);
 }
 
-.footer-content p {
-  text-align: center;
+.list-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+.list {
+  margin-top: 20px;
+}
+.list a {
+  text-decoration: none;
+  color: rgb(102, 102, 102);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 60px;
+}
+
+.socials a {
+  text-decoration: none;
+  font-size: 35px;
+  color: var(--primary-color);
+}
+.socials p {
+  color:rgb(102, 102, 102);
+}
+
+.rights{
+  padding-left: 60px;
+  color:rgb(102, 102, 102);
 }
