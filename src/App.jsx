@@ -4,21 +4,29 @@ import Register from "./components/register/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./views/Home/Home";
 import Cart from "./components/cart/Cart";
-
+import { ShopContextProvider } from "./contexts/shop-context";
+import { UserContextProvider } from "./contexts/user-context";
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        {/* <Route path="/products" element={<ProductList />} /> */}
-        {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
-        <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/checkout" element={<Checkout />} /> */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* Add more routes as needed */}
-      </Routes>
-    </Router>
+    <>
+      <ShopContextProvider>
+        <UserContextProvider>
+          {" "}
+          <Router>
+            <Routes>
+              <Route path="/" index element={<Home />} />
+              {/* <Route path="/products" element={<ProductList />} /> */}
+              {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
+              <Route path="/cart" element={<Cart />} />
+              {/* <Route path="/checkout" element={<Checkout />} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              {/* Add more routes as needed */}
+            </Routes>
+          </Router>
+        </UserContextProvider>
+      </ShopContextProvider>
+    </>
   );
 }
 

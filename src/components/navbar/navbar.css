@@ -67,3 +67,19 @@ ul li a {
   height: 20px;
   border-left: 1px solid gray;
 }
+
+.cart-badge {
+  background-color: var(--primary-color);
+  font-size: 10px;
+  max-width: 90px;
+  max-height: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  color: white;
+  
+}
+.user {
+  color: var(--primary-color);
+}
+

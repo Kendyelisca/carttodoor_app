@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { UserContext } from "../../contexts/user-context";
+import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
+  const { setUser } = useContext(UserContext);
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    // Aquí puedes agregar la lógica para autenticar al usuario
-    // por ejemplo, enviar los datos al servidor.
-  };
+    const { data } = await axios.post("http://localhost:8080/users/login", {
+      email,
+      password,
+    });
+    setUser(data.user);
+    alert("Loggin successfully");
+
+    setRedirect(true);
+  }
+
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div className="container">
@@ -21,13 +35,14 @@ const Login = () => {
       </div>
       <form onSubmit={handleSubmit} className="login-form">
         <h1>Login to Your Acount</h1>
+
         <div className="form-group">
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="username"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
         </div>
         <div className="form-group">

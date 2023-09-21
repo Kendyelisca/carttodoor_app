@@ -1,16 +1,29 @@
 import { useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    // Aquí puedes agregar la lógica para enviar los datos del formulario de registro al servidor
-  };
+    await axios.post("http://localhost:8080/users", {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+    });
+    alert("Registration complete. Please log in");
+    navigate("/login");
+  }
 
   return (
     <div className="register-container">
@@ -31,9 +44,27 @@ const Register = () => {
         <div className="form-group">
           <input
             type="text"
+            id="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="First name"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Last name"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
             id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
             placeholder="Username"
           />
         </div>

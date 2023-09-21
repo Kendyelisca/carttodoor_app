@@ -15,13 +15,13 @@ export const PRODUCTS = [
   {
     id: 1,
     productName: "Peaches",
-    price: 2.0,
+    price: 20.7,
     productImage: product1,
   },
   {
     id: 2,
     productName: "Peaches",
-    price: 2.0,
+    price: 2.5,
     productImage: product2,
   },
   {
@@ -33,7 +33,7 @@ export const PRODUCTS = [
   {
     id: 4,
     productName: "Peaches",
-    price: 2.0,
+    price: 2.3,
     productImage: product4,
   },
   {
