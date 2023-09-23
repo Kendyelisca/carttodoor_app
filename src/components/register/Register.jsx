@@ -14,7 +14,7 @@ const Register = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    await axios.post("https://carttodoormarket.onrender.com/users", {
+    await axios.post("http://localhost:8080/users", {
       firstName,
       lastName,
       userName,

@@ -8,7 +8,8 @@ import { ShopContext } from "../../contexts/shop-context"; // Import your shoppi
 import { UserContext } from "../../contexts/user-context";
 const Navbar = () => {
   const { cartItems } = useContext(ShopContext);
-  const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext) ?? {}; // Provide an empty object as a default
+
   console.log(user);
   // Calculate the total quantity of items in the cart
   const totalQuantityInCart = Object.values(cartItems).reduce(
@@ -44,10 +45,10 @@ const Navbar = () => {
           )}
         </Link>
         <div className="profile-container"> </div>{" "}
-        <Link to="/login" className="profile">
+        <Link to={user ? "/account" : "/login"} className="profile">
           <RxHamburgerMenu />
           <CgProfile />
-          {!!user && <div className="user">{user.userName}</div>}
+          {user && user.userName && <div className="user">{user.userName}</div>}
         </Link>
       </nav>
     </div>

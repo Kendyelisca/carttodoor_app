@@ -1,19 +1,19 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    if (!user) {
-      axios.get("http://localhost:8080/users");
-    }
-  }, []);
+  const logout = () => {
+    // Clear the user data and token
+    setUser(null);
+    localStorage.removeItem("token"); // Remove the token from local storage
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
     </UserContext.Provider>
   );

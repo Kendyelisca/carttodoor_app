@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./login.css";
 import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../../contexts/user-context";
@@ -8,19 +8,32 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    // Check if a user is already authenticated (token exists in local storage)
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      // Set the user context with the token's data
+      // This assumes that your token contains user information like ID, username, etc.
+      // Modify it to match your token structure
+      const tokenData = JSON.parse(atob(storedToken.split(".")[1]));
+      setUser(tokenData);
+      setRedirect(true);
+    }
+  }, [setUser]);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const { data } = await axios.post(
-      "https://carttodoormarket.onrender.com/users/login",
-      {
-        email,
-        password,
-      }
-    );
+    const { data } = await axios.post("http://localhost:8080/users/login", {
+      email,
+      password,
+    });
     setUser(data.user);
-    alert("Loggin successfully");
+    alert("Login successful");
+
+    // Store the token in local storage
+    localStorage.setItem("token", data.token);
 
     setRedirect(true);
   }
