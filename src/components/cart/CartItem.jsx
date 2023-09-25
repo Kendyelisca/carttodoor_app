@@ -12,7 +12,9 @@ const CartItem = (props) => {
     useContext(ShopContext);
   return (
     <div className="cartItem">
-      <img src={productImage} alt={productName} />
+      <div className="img-product">
+        <img src={productImage} alt={productName} />
+      </div>
       <div className="description">
         <p>
           <b>{productName}</b>

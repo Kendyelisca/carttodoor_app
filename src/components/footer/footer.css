@@ -1,15 +1,18 @@
 .footer-content {
-  width: 100vw;
+  width: 100%;
   background-color: rgb(245, 246, 248);
   border-top: 1px solid rgb(206, 198, 198);
 }
 
 .list-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 100px;
+  display: grid;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
+  /* gap: 100px; */
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 60px;
 }
+
 .list {
   margin-top: 20px;
 }
@@ -31,10 +34,10 @@
   color: var(--primary-color);
 }
 .socials p {
-  color:rgb(102, 102, 102);
+  color: rgb(102, 102, 102);
 }
 
-.rights{
+.rights {
   padding-left: 60px;
-  color:rgb(102, 102, 102);
+  color: rgb(102, 102, 102);
 }

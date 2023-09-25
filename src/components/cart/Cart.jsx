@@ -27,18 +27,22 @@ const Cart = () => {
           // If the item quantity in the cart is 0, it won't be rendered
           return null;
         })}
-        {totalAmount > 0 ? (
-          <div className="checkout">
-            {/* Display the subtotal and buttons for continuing shopping and checkout */}
-            <p>Subtotal: ${totalAmount}</p>
+      </div>
+      {totalAmount > 0 ? (
+        <div className="checkout">
+          {/* Display the subtotal and buttons for continuing shopping and checkout */}
+          <p>Subtotal: ${totalAmount}</p>
+          <div>
             <button onClick={() => navigate("/")}>Continue Shopping</button>
             <button>Checkout</button>
           </div>
-        ) : (
-          // If the cart is empty, display a message
+        </div>
+      ) : (
+        // If the cart is empty, display a message
+        <div className="empty">
           <h2>Your cart is Empty</h2>
-        )}
-      </div>
+        </div>
+      )}
 
       <Footer />
     </>

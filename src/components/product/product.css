@@ -1,6 +1,4 @@
 .product {
-  width: 250px;
-  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,11 +6,19 @@
   border-radius: 20px;
   background-color: rgba(232, 219, 219, 0.5);
   text-align: center;
+  padding: 20px 10px;
+}
+
+.img {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 .product img {
   width: 200px;
   height: 100px;
+  mix-blend-mode: darken;
 }
 .product button {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
