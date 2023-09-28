@@ -25,19 +25,39 @@ const Login = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const { data } = await axios.post("http://localhost:8080/users/login", {
-      email,
-      password,
-    });
-    setUser(data.user);
-    alert("Login successful");
 
-    // Store the token in local storage
-    localStorage.setItem("token", data.token);
+    try {
+      const { data } = await axios.post("http://localhost:8080/users/login", {
+        email,
+        password,
+      });
 
-    setRedirect(true);
+      setUser(data.user);
+      alert("Login successful");
+
+      // Store the token in local storage
+      localStorage.setItem("token", data.token);
+
+      // Redirect after successful login
+      setRedirect(true);
+    } catch (error) {
+      // Handle errors here
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // Check if there is an error message in the response data
+        const errorMessage = error.response.data.message || "Login failed";
+        alert(errorMessage);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received from the server");
+      } else {
+        // Something else happened while setting up the request
+        console.error("Error setting up the request", error.message);
+      }
+    }
   }
 
+  // Redirect to the home page if redirect is true
   if (redirect) {
     return <Navigate to={"/"} />;
   }

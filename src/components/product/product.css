@@ -22,3 +22,6 @@
 .product button {
   background-color: var(--primary-color);
 }
+.description {
+  max-width: 200px;
+}

@@ -5,25 +5,30 @@ import { useContext } from "react";
 // Define the Product component, which represents an individual product
 const Product = (props) => {
   // Destructure the data properties from the props
-  const { id, productName, price, productImage } = props.data;
-
-  // Access addToCart function and cartItems from the ShopContext
+  const { id, name, price, description, productImgs } = props.data;
   const { addToCart, cartItems } = useContext(ShopContext);
-
-  // Determine the quantity of this product in the cart
   const cartItemAmount = cartItems[id] || 0;
+
+  const handleAddToCart = () => {
+    addToCart(id);
+    console.log(`Added product with ID ${id} to the cart.`);
+    console.log("Updated cartItems:", cartItems);
+  };
+
+  console.log("Product component rendered with ID:", id);
 
   return (
     <div className="product" key={id}>
       <div className="img">
-        <img src={productImage} alt={productName} />
+        <img src={productImgs[0].url} alt={name} />
       </div>
       <div className="description">
+        <p>{description}</p>
         <p>
-          <b>{productName}</b>:${price}
+          <b>{name}</b>:${price}
         </p>
       </div>
-      <button className="cartBtn" onClick={() => addToCart(id)}>
+      <button className="cartBtn" onClick={handleAddToCart}>
         Add to cart{cartItemAmount > 0 && <>({cartItemAmount})</>}{" "}
         {/* Display the quantity in the cart if greater than 0 */}
       </button>

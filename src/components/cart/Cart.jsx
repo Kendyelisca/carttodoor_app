@@ -1,36 +1,81 @@
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import { useContext } from "react";
-import { ShopContext } from "../../contexts/shop-context";
-import { PRODUCTS } from "../../productData";
+import { useContext, useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
-const Cart = () => {
-  // Access cartItems and getTotalCartAmount function from the ShopContext
-  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+import axios from "axios";
+import { ShopContext } from "../../contexts/shop-context";
 
-  // Calculate the total cart amount
-  let totalAmount = getTotalCartAmount();
+const Cart = () => {
+  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const [loading, setLoading] = useState(true);
+  const [redirect, setRedirect] = useState(false);
+  const [cartProducts, setCartProducts] = useState([]);
 
   // Use the useNavigate hook from React Router DOM for navigation
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if a user is authenticated (token exists in local storage)
+    const storedToken = localStorage.getItem("token");
+    if (!storedToken) {
+      // If no token exists, set redirect to true and navigate to login
+      setRedirect(true);
+      navigate("/login");
+      return;
+    }
+
+    // Fetch cart items from the backend
+    axios
+      .get("http://localhost:8080/carts", {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      })
+      .then((response) => {
+        console.log("Cart API Response:", response.data); // Log the API response
+
+        // Combine product data with quantity information
+        const productsWithQuantity = response.data.map((cartItem) => {
+          const productData = cartItem.product;
+          const quantity = cartItem.quantity;
+          return {
+            ...productData,
+            quantity,
+          };
+        });
+
+        setCartProducts(productsWithQuantity);
+        setLoading(false);
+      })
+      .catch((error) => {
+        // Handle unauthorized or other errors here
+        console.error(error);
+      });
+  }, [navigate]);
+
+  if (redirect) {
+    return null; // You can also render a loading or login component here
+  }
+
+  // Calculate the total cart amount based on cartItems
+  let totalAmount = getTotalCartAmount();
+
   return (
     <>
       <Navbar />
       <div className="cart-container">
-        {/* Map through the product data and render CartItem components for items in the cart */}
-        {PRODUCTS.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem key={product.id} data={product} />;
-          }
-          // If the item quantity in the cart is 0, it won't be rendered
-          return null;
-        })}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          cartProducts.map((product) => (
+            <CartItem key={product.id} data={product} />
+          ))
+        )}
       </div>
       {totalAmount > 0 ? (
         <div className="checkout">
-          {/* Display the subtotal and buttons for continuing shopping and checkout */}
           <p>Subtotal: ${totalAmount}</p>
           <div>
             <button onClick={() => navigate("/")}>Continue Shopping</button>
@@ -38,7 +83,6 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        // If the cart is empty, display a message
         <div className="empty">
           <h2>Your cart is Empty</h2>
         </div>
