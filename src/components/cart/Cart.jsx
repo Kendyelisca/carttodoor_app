@@ -22,6 +22,7 @@ const Cart = () => {
     if (!storedToken) {
       // If no token exists, set redirect to true and navigate to login
       setRedirect(true);
+      alert("You must log in to access your cart.");
       navigate("/login");
       return;
     }

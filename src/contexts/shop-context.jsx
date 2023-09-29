@@ -35,6 +35,8 @@ export const ShopContextProvider = (props) => {
     // Get the user's authentication token from wherever you store it (e.g., localStorage)
     const authToken = localStorage.getItem("token");
 
+    console.log("Adding item to cart. Item ID:", itemId); // Log the item ID before making the API request
+
     // Make an API request to add the item to the cart with the token in the headers
     axios
       .post(
@@ -47,6 +49,7 @@ export const ShopContextProvider = (props) => {
         }
       )
       .then((response) => {
+        console.log("Response from addToCart API:", response.data); // Log the response data
         if (response.status === 201) {
           // Update the cartItems state with the new item
           setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -64,27 +67,34 @@ export const ShopContextProvider = (props) => {
       });
   };
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = (productId) => {
     // Get the user's authentication token from wherever you store it (e.g., localStorage)
     const authToken = localStorage.getItem("token");
+
+    console.log("Removing item from cart. Product ID:", productId); // Log the product ID before making the API request
+
     // Check if the item is already in the cart
-    if (cartItems[itemId] > 0) {
+    if (cartItems[productId] > 0) {
       // Make an API request to remove the item from the cart
       axios
-        .delete(`http://localhost:8080/carts/${itemId}`, {
+        .delete(`http://localhost:8080/carts/${productId}`, {
           headers: {
             Authorization: `Bearer ${authToken}`, // Include the token here
           },
         })
         .then((response) => {
+          console.log("Response from removeFromCart API:", response.data); // Log the response data
           // Check if the API request was successful
           if (response.status === 204) {
             // Update the cartItems state by decrementing the quantity of the item
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-            if (cartItems[itemId] === 1) {
+            setCartItems((prev) => ({
+              ...prev,
+              [productId]: prev[productId] - 1,
+            }));
+            if (cartItems[productId] === 1) {
               // If the quantity becomes zero, remove the item from cartItems
               const updatedCart = { ...cartItems };
-              delete updatedCart[itemId];
+              delete updatedCart[productId];
               setCartItems(updatedCart);
             }
           } else {

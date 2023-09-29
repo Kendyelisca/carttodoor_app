@@ -1,18 +1,26 @@
 import "./product.css";
 import { ShopContext } from "../../contexts/shop-context";
 import { useContext } from "react";
-
+import { UserContext } from "../../contexts/user-context";
+import { useNavigate } from "react-router-dom";
 // Define the Product component, which represents an individual product
 const Product = (props) => {
   // Destructure the data properties from the props
   const { id, name, price, description, productImgs } = props.data;
   const { addToCart, cartItems } = useContext(ShopContext);
+  const { user } = useContext(UserContext);
   const cartItemAmount = cartItems[id] || 0;
+  const navigate = useNavigate(); // Initialize the navigate function
 
   const handleAddToCart = () => {
-    addToCart(id);
-    console.log(`Added product with ID ${id} to the cart.`);
-    console.log("Updated cartItems:", cartItems);
+    if (!user) {
+      alert("You must log in to add products to cart.");
+      navigate("/login");
+    } else {
+      addToCart(id);
+      console.log(`Added product with ID ${id} to the cart.`);
+      console.log("Updated cartItems:", cartItems);
+    }
   };
 
   console.log("Product component rendered with ID:", id);
