@@ -50,9 +50,11 @@ export const ShopContextProvider = (props) => {
       )
       .then((response) => {
         console.log("Response from addToCart API:", response.data); // Log the response data
+
         if (response.status === 201) {
           // Update the cartItems state with the new item
-          setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+          setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] }));
+          console.log("anadimos un producto" + { itemId });
         } else {
           // Handle other status codes here
           console.error(

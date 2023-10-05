@@ -1,0 +1,18 @@
+.container-service {
+  width: 100%;
+}
+.container-service h2 {
+  text-align: center;
+}
+
+.service {
+  gap: 20px;
+  padding-left: 20px;
+}
+.service-icon {
+  font-size: 70px;
+  padding-top: 10px;
+}
+.service-details {
+  padding-top: 10px;
+}

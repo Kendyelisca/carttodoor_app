@@ -35,7 +35,7 @@ const Cart = () => {
         },
       })
       .then((response) => {
-        console.log("Cart API Response:", response.data); // Log the API response
+        // Log the API response
 
         // Combine product data with quantity information
         const productsWithQuantity = response.data.map((cartItem) => {
@@ -70,9 +70,14 @@ const Cart = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          cartProducts.map((product) => (
-            <CartItem key={product.id} data={product} />
-          ))
+          Array.from(new Set(cartProducts.map((product) => product.id))).map(
+            (id) => {
+              const uniqueProduct = cartProducts.find(
+                (product) => product.id === id
+              );
+              return <CartItem key={uniqueProduct.id} data={uniqueProduct} />;
+            }
+          )
         )}
       </div>
       {totalAmount > 0 ? (

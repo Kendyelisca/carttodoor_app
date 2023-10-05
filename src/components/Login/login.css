@@ -1,5 +1,4 @@
-
-.container {
+.container-login {
   display: flex;
   height: 100vh;
   position: relative;
@@ -35,7 +34,7 @@
   transform: scale(1.05); /* Scale the button slightly when hovered */
 }
 
-.if-new{
+.if-new {
   flex: 40%;
   height: 100%;
   background-color: var(--primary-color);
@@ -55,8 +54,7 @@ label {
 
 input[type="text"],
 input[type="password"],
-input[type="email"]
-{
+input[type="email"] {
   width: 300px;
   padding: 10px;
   border: 1px solid #ccc;

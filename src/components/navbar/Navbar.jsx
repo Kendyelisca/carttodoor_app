@@ -27,15 +27,15 @@ const Navbar = () => {
         </div>
         <ul>
           <li>
-            <a href="#about-us">About Us</a>
+            <Link to="/aboutus">About Us</Link>
           </li>
           <div className="bar"></div>
           <li>
-            <a href="#teachers">Services</a>
+            <Link to="/services">Services</Link>
           </li>
           <div className="bar"></div>
           <li>
-            <a href="#contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
         <Link to="/cart" className="cart">

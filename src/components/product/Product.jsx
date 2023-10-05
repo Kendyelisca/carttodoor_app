@@ -18,12 +18,9 @@ const Product = (props) => {
       navigate("/login");
     } else {
       addToCart(id);
-      console.log(`Added product with ID ${id} to the cart.`);
-      console.log("Updated cartItems:", cartItems);
+      alert(id);
     }
   };
-
-  console.log("Product component rendered with ID:", id);
 
   return (
     <div className="product" key={id}>

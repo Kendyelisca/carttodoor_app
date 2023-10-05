@@ -5,30 +5,21 @@ const CartItem = (props) => {
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
     useContext(ShopContext);
 
-  console.log("CartItem Data:", props.data);
-  console.log("Cart Items:", cartItems); // Log cartItems
-  console.log("Context Functions:", {
-    addToCart,
-    removeFromCart,
-    updateCartItemCount,
-  }); // Log context functions
-
   // Ensure that props.data is defined
   if (!props.data) {
     console.warn("Invalid data."); // Log a warning
     return null; // Handle the case when data is missing or incomplete
   }
 
-  const { id, name, price, description, productImgs, quantity } = props.data;
+  const { id, name, price, productImgs } = props.data;
 
   const handleRemoveFromCart = () => {
-    console.log("Removing item from cart:", id);
     removeFromCart(id); // Log and call the removeFromCart function
   };
 
   const handleAddToCart = () => {
     const newQuantity = cartItems[id] + 1; // Calculate the new quantity
-    console.log("Adding item to cart:", id);
+
     updateCartItemCount(newQuantity, id); // Call updateCartItemCount with the new quantity
   };
 

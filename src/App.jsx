@@ -8,6 +8,9 @@ import { ShopContextProvider } from "./contexts/shop-context";
 import { UserContextProvider } from "./contexts/user-context";
 import Account from "./components/account/Account";
 import Checkout from "./components/checkout/Checkout";
+import ContactSection from "./components/contact/Contact";
+import ServicesSection from "./components/services/Service";
+import AboutUsSection from "./components/aboutus/AboutUs";
 function App() {
   return (
     <>
@@ -22,6 +25,9 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/contact" element={<ContactSection />} />
+              <Route path="/services" element={<ServicesSection />} />
+              <Route path="/aboutus" element={<AboutUsSection />} />
               {/* <Route path="/checkout" element={<Checkout />} /> */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
