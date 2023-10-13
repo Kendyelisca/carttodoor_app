@@ -1,14 +1,12 @@
-import Footer from "../footer/Footer";
-import Navbar from "../navbar/Navbar";
 import { useContext, useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
 import axios from "axios";
-import { ShopContext } from "../../contexts/shop-context";
+import { CartContext } from "../../contexts/cart-context";
 
 const Cart = () => {
-  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
@@ -65,7 +63,6 @@ const Cart = () => {
 
   return (
     <>
-      <Navbar />
       <div className="cart-container">
         {loading ? (
           <p>Loading...</p>
@@ -93,8 +90,6 @@ const Cart = () => {
           <h2>Your cart is Empty</h2>
         </div>
       )}
-
-      <Footer />
     </>
   );
 };

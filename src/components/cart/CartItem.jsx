@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { ShopContext } from "../../contexts/shop-context";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart-context";
 
 const CartItem = (props) => {
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
-    useContext(ShopContext);
+    useContext(CartContext);
 
   // Ensure that props.data is defined
   if (!props.data) {

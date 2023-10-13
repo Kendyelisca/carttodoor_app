@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     // Check if a user is already authenticated (token exists in local storage)
@@ -64,11 +64,6 @@ const Login = () => {
 
   return (
     <div className="container-login">
-      <div className="logo2">
-        <Link to="/">
-          <img src="./store-logo.png" />
-        </Link>
-      </div>
       <form onSubmit={handleSubmit} className="login-form">
         <h1>Login to Your Acount</h1>
 

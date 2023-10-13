@@ -4,172 +4,29 @@ import axios from "axios";
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]); // State to store products
+  const [products, setProducts] = useState([]);
 
-  const getDefaultCart = () => {
-    let cart = {};
-    for (const product of products) {
-      cart[product.id] = 0;
-    }
-    return cart;
-  };
-
-  const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        const itemInfo = products.find(
-          (product) => product.id === Number(item)
-        );
-        if (itemInfo) {
-          totalAmount += cartItems[item] * itemInfo.price;
-        }
-      }
-    }
-    return totalAmount;
-  };
-
-  const addToCart = (itemId) => {
-    // Get the user's authentication token from wherever you store it (e.g., localStorage)
-    const authToken = localStorage.getItem("token");
-
-    console.log("Adding item to cart. Item ID:", itemId); // Log the item ID before making the API request
-
-    // Make an API request to add the item to the cart with the token in the headers
+  useEffect(() => {
+    // Fetch products from the backend when the component mounts using Axios
     axios
-      .post(
-        "http://localhost:8080/carts",
-        { productId: itemId, quantity: 1 },
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`, // Include the token here
-          },
-        }
-      )
+      .get("http://localhost:8080/products")
       .then((response) => {
-        console.log("Response from addToCart API:", response.data); // Log the response data
-
-        if (response.status === 201) {
-          // Update the cartItems state with the new item
-          setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] }));
-          console.log("anadimos un producto" + { itemId });
-        } else {
-          // Handle other status codes here
-          console.error(
-            "Failed to add item to cart. Status code:",
-            response.status
-          );
-        }
+        // Set the retrieved products in the state
+        setProducts(response.data);
       })
       .catch((error) => {
-        // Handle network errors or other issues
-        console.error("Error adding item to cart:", error);
+        console.error("Error fetching products:", error);
       });
-  };
-
-  const removeFromCart = (productId) => {
-    // Get the user's authentication token from wherever you store it (e.g., localStorage)
-    const authToken = localStorage.getItem("token");
-
-    console.log("Removing item from cart. Product ID:", productId); // Log the product ID before making the API request
-
-    // Check if the item is already in the cart
-    if (cartItems[productId] > 0) {
-      // Make an API request to remove the item from the cart
-      axios
-        .delete(`http://localhost:8080/carts/${productId}`, {
-          headers: {
-            Authorization: `Bearer ${authToken}`, // Include the token here
-          },
-        })
-        .then((response) => {
-          console.log("Response from removeFromCart API:", response.data); // Log the response data
-          // Check if the API request was successful
-          if (response.status === 204) {
-            // Update the cartItems state by decrementing the quantity of the item
-            setCartItems((prev) => ({
-              ...prev,
-              [productId]: prev[productId] - 1,
-            }));
-            if (cartItems[productId] === 1) {
-              // If the quantity becomes zero, remove the item from cartItems
-              const updatedCart = { ...cartItems };
-              delete updatedCart[productId];
-              setCartItems(updatedCart);
-            }
-          } else {
-            // Handle the error case if needed
-            console.error("Failed to remove item from cart:", response.data);
-          }
-        })
-        .catch((error) => {
-          // Handle any network or other errors
-          console.error("Error removing item from cart:", error);
-        });
-    }
-  };
-
-  const updateCartItemCount = (newAmount, itemId) => {
-    if (newAmount >= 0) {
-      // Get the user's authentication token from wherever you store it (e.g., localStorage)
-      const authToken = localStorage.getItem("token");
-
-      // Make an API request to update the item quantity in the cart with the token in the headers
-      axios
-        .put(
-          `http://localhost:8080/carts/${itemId}`,
-          { quantity: newAmount },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`, // Include the token here
-            },
-          }
-        )
-        .then((response) => {
-          // Check if the API request was successful
-          if (response.status === 200) {
-            // Update the cartItems state with the new quantity
-            setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
-          } else {
-            // Handle the error case if needed
-            console.error(
-              "Failed to update item quantity in cart:",
-              response.data
-            );
-          }
-        })
-        .catch((error) => {
-          // Handle any network or other errors
-          console.error("Error updating item quantity in cart:", error);
-        });
-    }
-  };
-
-  useEffect(() => {
-    axios.get("http://localhost:8080/products").then((response) => {
-      setProducts(response.data);
-      setLoading(false);
-    });
   }, []);
 
-  useEffect(() => {
-    setCartItems(getDefaultCart());
-  }, [products]);
-
+  // Make sure to update the contextValue with the fetched products and cart
   const contextValue = {
-    cartItems,
-    addToCart,
-    removeFromCart,
-    updateCartItemCount,
-    getTotalCartAmount,
-    loading,
+    products,
   };
 
   return (
     <ShopContext.Provider value={contextValue}>
-      {loading ? <p>Loading...</p> : props.children}
+      {props.children}
     </ShopContext.Provider>
   );
 };

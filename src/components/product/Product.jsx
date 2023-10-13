@@ -1,5 +1,5 @@
 import "./product.css";
-import { ShopContext } from "../../contexts/shop-context";
+import { CartContext } from "../../contexts/cart-context";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Product = (props) => {
   // Destructure the data properties from the props
   const { id, name, price, description, productImgs } = props.data;
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart, cartItems } = useContext(CartContext);
   const { user } = useContext(UserContext);
   const cartItemAmount = cartItems[id] || 0;
   const navigate = useNavigate(); // Initialize the navigate function

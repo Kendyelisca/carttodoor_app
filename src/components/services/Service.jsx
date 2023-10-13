@@ -7,7 +7,6 @@ import "./service.css";
 function ServicesSection() {
   return (
     <>
-      <Navbar />
       <section className="services-section">
         <div className="container-service">
           <h2>Discover CartToDoor Market Services</h2>
@@ -52,7 +51,6 @@ function ServicesSection() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

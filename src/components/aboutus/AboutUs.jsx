@@ -1,10 +1,7 @@
-import Footer from "../footer/Footer";
-import Navbar from "../navbar/Navbar";
 import "./about.css";
 function AboutUsSection() {
   return (
     <>
-      <Navbar />
       <section className="about-us-section">
         <div className="container-about">
           <h2>About CartToDoor Market</h2>
@@ -21,9 +18,9 @@ function AboutUsSection() {
                 outstanding customer service.
               </p>
               <p>
-                Founded in [Year of Establishment], we've been serving customers
-                across the globe, offering a wide range of products, from
-                electronics and fashion to home goods and more.
+                Founded in 2023, we've been serving customers across the globe,
+                offering a wide range of products, from electronics and fashion
+                to home goods and more.
               </p>
               <p>
                 What sets us apart is our commitment to your satisfaction. Our
@@ -39,7 +36,6 @@ function AboutUsSection() {
           </div>
         </div>{" "}
       </section>
-      <Footer />
     </>
   );
 }

@@ -5,12 +5,7 @@ import ProductList from "../../components/product/ProductList";
 const Home = () => {
   return (
     <>
-      {/* Navigation bar */}
-      <Navbar />
-      {/* Main content */}
       <ProductList />
-      {/* Footer content */}
-      <Footer />
     </>
   );
 };

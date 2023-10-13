@@ -1,9 +1,14 @@
+
 .container-about {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
   gap: 30px;
 }
+
 
 .about-us-image {
   width: 100%;
@@ -17,7 +22,7 @@
 }
 
 .about-us-text p {
-  max-width: 800px;
+  max-width: 900px;
   padding-left: 20px;
   padding-right: 20px;
 }

@@ -1,9 +1,9 @@
 // Checkout.js (a component for the checkout page)
 import { useContext, useState } from "react";
-import { ShopContext } from "../../contexts/shop-context";
+import { CartContext } from "../../contexts/cart-context";
 
 const Checkout = () => {
-  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount } = useContext(CartContext);
   const [formData, setFormData] = useState({
     // Initialize with empty form fields
     name: "",

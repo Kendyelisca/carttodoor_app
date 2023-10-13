@@ -29,12 +29,6 @@
   transform: scale(1.05); /* Scale the button slightly when hovered */
 }
 
-.logo3 img {
-  position: absolute;
-  width: 100px;
-  height: 80px;
-}
-
 .register-form {
   flex: 60%;
   height: 100%;

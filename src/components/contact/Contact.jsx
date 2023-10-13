@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import Navbar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
+import { useState } from "react";
 
+import "./contact.css";
 function ContactSection() {
   // State for form fields
   const [name, setName] = useState("");
@@ -22,43 +21,42 @@ function ContactSection() {
 
   return (
     <>
-      <Navbar />
       <section className="contact-section">
-        <div className="container">
+        <div className="contact-container">
           <h2>Contact Us</h2>
           <p>
             Do you have questions, feedback, or need assistance with your order?
             Feel free to get in touch with us! We're here to help.
           </p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="form-content">
             <div className="form-group">
-              <label htmlFor="name">Your Name</label>
               <input
                 type="text"
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                placeholder="Your Name..."
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Your Email</label>
               <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                placeholder="Your Email..."
               />
             </div>
             <div className="form-group">
-              <label htmlFor="message">Your Message</label>
               <textarea
                 id="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows="4"
                 required
+                placeholder="Your Message..."
               ></textarea>
             </div>
             <button type="submit">Submit</button>
@@ -70,7 +68,6 @@ function ContactSection() {
           </p>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

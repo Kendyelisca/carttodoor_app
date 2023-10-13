@@ -4,10 +4,10 @@ import "./navbar.css";
 import { PiShoppingCart } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
-import { ShopContext } from "../../contexts/shop-context"; // Import your shopping cart context
+import { CartContext } from "../../contexts/cart-context";
 import { UserContext } from "../../contexts/user-context";
 const Navbar = () => {
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems } = useContext(CartContext);
   const { user } = useContext(UserContext) ?? {}; // Provide an empty object as a default
 
   console.log(user);

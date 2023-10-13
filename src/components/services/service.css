@@ -1,5 +1,7 @@
 .container-service {
   width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .container-service h2 {
   text-align: center;

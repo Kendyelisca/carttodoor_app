@@ -1,13 +1,6 @@
 .container-login {
   display: flex;
   height: 100vh;
-  position: relative;
-}
-
-.logo2 img {
-  position: absolute;
-  width: 100px;
-  height: 80px;
 }
 
 .login-form {

@@ -11,29 +11,36 @@ import Checkout from "./components/checkout/Checkout";
 import ContactSection from "./components/contact/Contact";
 import ServicesSection from "./components/services/Service";
 import AboutUsSection from "./components/aboutus/AboutUs";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+import { CartContextProvider } from "./contexts/cart-context";
 function App() {
   return (
     <>
       <ShopContextProvider>
         <UserContextProvider>
-          {" "}
-          <Router>
-            <Routes>
-              <Route path="/" index element={<Home />} />
-              {/* <Route path="/products" element={<ProductList />} /> */}
-              {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/contact" element={<ContactSection />} />
-              <Route path="/services" element={<ServicesSection />} />
-              <Route path="/aboutus" element={<AboutUsSection />} />
-              {/* <Route path="/checkout" element={<Checkout />} /> */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              {/* Add more routes as needed */}
-            </Routes>
-          </Router>
+          <CartContextProvider>
+            {" "}
+            <Router>
+              <Navbar />
+              <Routes>
+                <Route path="/" index element={<Home />} />
+                {/* <Route path="/products" element={<ProductList />} /> */}
+                {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/contact" element={<ContactSection />} />
+                <Route path="/services" element={<ServicesSection />} />
+                <Route path="/aboutus" element={<AboutUsSection />} />
+                {/* <Route path="/checkout" element={<Checkout />} /> */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                {/* Add more routes as needed */}
+              </Routes>
+              <Footer />
+            </Router>
+          </CartContextProvider>
         </UserContextProvider>
       </ShopContextProvider>
     </>
