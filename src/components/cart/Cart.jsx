@@ -1,95 +1,290 @@
-import { useContext, useEffect, useState } from "react";
 import CartItem from "./CartItem";
-import { useNavigate } from "react-router-dom";
 import "./cart.css";
-import axios from "axios";
-import { CartContext } from "../../contexts/cart-context";
 
 const Cart = () => {
-  const { cartItems, getTotalCartAmount } = useContext(CartContext);
-  const [loading, setLoading] = useState(true);
-  const [redirect, setRedirect] = useState(false);
-  const [cartProducts, setCartProducts] = useState([]);
-
-  // Use the useNavigate hook from React Router DOM for navigation
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if a user is authenticated (token exists in local storage)
-    const storedToken = localStorage.getItem("token");
-    if (!storedToken) {
-      // If no token exists, set redirect to true and navigate to login
-      setRedirect(true);
-      alert("You must log in to access your cart.");
-      navigate("/login");
-      return;
-    }
-
-    // Fetch cart items from the backend
-    axios
-      .get("http://localhost:8080/carts", {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      })
-      .then((response) => {
-        // Log the API response
-
-        // Combine product data with quantity information
-        const productsWithQuantity = response.data.map((cartItem) => {
-          const productData = cartItem.product;
-          const quantity = cartItem.quantity;
-          return {
-            ...productData,
-            quantity,
-          };
-        });
-
-        setCartProducts(productsWithQuantity);
-        setLoading(false);
-      })
-      .catch((error) => {
-        // Handle unauthorized or other errors here
-        console.error(error);
-      });
-  }, [navigate]);
-
-  if (redirect) {
-    return null; // You can also render a loading or login component here
-  }
-
-  // Calculate the total cart amount based on cartItems
-  let totalAmount = getTotalCartAmount();
-
   return (
     <>
       <div className="cart-container">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          Array.from(new Set(cartProducts.map((product) => product.id))).map(
-            (id) => {
-              const uniqueProduct = cartProducts.find(
-                (product) => product.id === id
-              );
-              return <CartItem key={uniqueProduct.id} data={uniqueProduct} />;
-            }
-          )
-        )}
-      </div>
-      {totalAmount > 0 ? (
-        <div className="checkout">
-          <p>Subtotal: ${totalAmount}</p>
-          <div>
-            <button onClick={() => navigate("/")}>Continue Shopping</button>
-            <button onClick={() => navigate("/checkout")}>Checkout</button>
+        <div>
+          <h1>Will be soon available</h1>
+        </div>
+        <div className="tower">
+          <div className="tower__group">
+            <div className="tower__brick-layer tower__brick-layer--4">
+              <div className="tower__brick tower__brick--0">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--90 tower__brick--red">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--180 tower__brick--orange">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--270 tower__brick--purple">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer--3">
+              <div className="tower__brick tower__brick--45 tower__brick--magenta">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--135">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--225 tower__brick--green">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--315 tower__brick--orange">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer--2">
+              <div className="tower__brick tower__brick--0 tower__brick--red">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--90 tower__brick--green">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--180 tower__brick--purple">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--270">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer--1">
+              <div className="tower__brick tower__brick--45 tower__brick--purple">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--135 tower__brick--magenta">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--225 tower__brick--red">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--315 tower__brick--green">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer">
+              <div className="tower__brick tower__brick--0 tower__brick--move14">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--90 tower__brick--red tower__brick--move13">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--180 tower__brick--orange tower__brick--move16">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--270 tower__brick--purple tower__brick--move15">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer---1">
+              <div className="tower__brick tower__brick--45 tower__brick--move10 tower__brick--magenta">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--135 tower__brick--move9">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--225 tower__brick--green tower__brick--move12">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--315 tower__brick--orange tower__brick--move11">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer---2">
+              <div className="tower__brick tower__brick--0 tower__brick--red tower__brick--move6">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--90 tower__brick--green tower__brick--move5">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--180 tower__brick--purple tower__brick--move8">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--270 tower__brick--move7">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
+            <div className="tower__brick-layer tower__brick-layer---3">
+              <div className="tower__brick tower__brick--45 tower__brick--purple tower__brick--move2">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--135 tower__brick--magenta tower__brick--move1">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--225 tower__brick--red tower__brick--move4">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+              <div className="tower__brick tower__brick--315 tower__brick--green tower__brick--move3">
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-side"></div>
+                <div className="tower__brick-stud"></div>
+                <div className="tower__brick-stud"></div>
+              </div>
+            </div>
           </div>
         </div>
-      ) : (
-        <div className="empty">
-          <h2>Your cart is Empty</h2>
-        </div>
-      )}
+      </div>
     </>
   );
 };

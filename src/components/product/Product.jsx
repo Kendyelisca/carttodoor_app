@@ -1,5 +1,5 @@
 import "./product.css";
-import { CartContext } from "../../contexts/cart-context";
+
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 const Product = (props) => {
   // Destructure the data properties from the props
   const { id, name, price, description, productImgs } = props.data;
-  const { addToCart, cartItems } = useContext(CartContext);
+
   const { user } = useContext(UserContext);
-  const cartItemAmount = cartItems[id] || 0;
+
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleAddToCart = () => {
@@ -17,7 +17,6 @@ const Product = (props) => {
       alert("You must log in to add products to cart.");
       navigate("/login");
     } else {
-      addToCart(id);
       alert(id);
     }
   };
@@ -34,7 +33,7 @@ const Product = (props) => {
         </p>
       </div>
       <button className="cartBtn" onClick={handleAddToCart}>
-        Add to cart{cartItemAmount > 0 && <>({cartItemAmount})</>}{" "}
+        Add to cart
         {/* Display the quantity in the cart if greater than 0 */}
       </button>
     </div>

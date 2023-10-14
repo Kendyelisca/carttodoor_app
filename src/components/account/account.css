@@ -1,0 +1,40 @@
+.account {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.profile-content {
+  background-color: rgba(80, 114, 119, 0.097);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  gap: 20px;
+  border-radius: 20px;
+  max-width: 450px;
+  max-height: 500px;
+  margin: 50px 40px 60px;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  
+}
+.btns button {
+  font-size: 16px;
+}
+.icon {
+  color: rgba(146, 150, 206, 0.375);
+  font-size: 80px;
+}

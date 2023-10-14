@@ -24,13 +24,14 @@
   color: rgb(102, 102, 102);
   box-shadow: 2px 2px 2px gray;
   height: 35px;
-  max-width: 150px;
+  max-width: 190px;
   padding: 0 20px;
   margin-top: 15px;
 }
 
 .profile-container {
   height: 70px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,5 +78,5 @@ ul li a {
 }
 .user {
   color: var(--primary-color);
-  font-size: 14px;
+  
 }

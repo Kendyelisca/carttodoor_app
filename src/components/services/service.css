@@ -1,20 +1,49 @@
 .container-service {
   width: 100%;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 40px;
 }
 .container-service h2 {
   text-align: center;
+  padding-bottom: 20px;
 }
 
+.service-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 40px;
+}
 .service {
-  gap: 20px;
-  padding-left: 20px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(144, 166, 166, 0.16);
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
 }
 .service-icon {
-  font-size: 70px;
-  padding-top: 10px;
+  background-color: var(--primary-color);
+  width: 150px;
+  height: 150px;
+  font-size: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  transition: transform 0.3s; /* Add a transition for smooth animation */
 }
+
+.service:hover .service-icon {
+  transform: rotate(360deg); /* Rotate the icon 360 degrees on hover */
+}
+
 .service-details {
   padding-top: 10px;
 }
