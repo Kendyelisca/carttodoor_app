@@ -3,6 +3,11 @@
 * {
   box-sizing: border-box;
   --primary-color: #ff3131;
+  --hue: 0; /* Change the hue value to 0 for red color (#ff3131) */
+  --bg: hsl(var(--hue), 10%, 90%);
+  --fg: hsl(var(--hue), 10%, 10%);
+  --primary: hsl(var(--hue), 90%, 55%);
+  --trans-dur: 0.3s;
 }
 
 body {
