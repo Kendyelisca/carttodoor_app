@@ -27,10 +27,13 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:8080/users/login", {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        "https://carttodoormarket-back-end.onrender.com/users/login",
+        {
+          email,
+          password,
+        }
+      );
 
       setUser(data.user);
       alert("Login successful");

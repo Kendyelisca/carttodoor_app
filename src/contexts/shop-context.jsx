@@ -9,7 +9,7 @@ export const ShopContextProvider = (props) => {
   useEffect(() => {
     // Fetch products from the backend when the component mounts using Axios
     axios
-      .get("http://localhost:8080/products")
+      .get("https://carttodoormarket-back-end.onrender.com/products")
       .then((response) => {
         // Set the retrieved products in the state
         setProducts(response.data);
