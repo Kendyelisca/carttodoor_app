@@ -19,6 +19,7 @@ const Navbar = () => {
 
   // Function to open the logout confirmation dialog
   const openLogoutDialog = () => {
+    setMenuOpen(!isMenuOpen);
     setLogoutDialogOpen(true);
   };
 
@@ -54,9 +55,11 @@ const Navbar = () => {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
-        <Link to="/cart" className="cart">
-          <PiShoppingCart />
-        </Link>
+        <div className="cart-1">
+          <Link to="/cart">
+            <PiShoppingCart />
+          </Link>
+        </div>
         <div className="profile-container"> </div>{" "}
         <Link to={user ? "/account" : "/login"} className="profile">
           <RxHamburgerMenu />

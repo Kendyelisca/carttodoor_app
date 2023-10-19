@@ -1,7 +1,6 @@
 .register-container {
   display: flex;
   height: 100vh;
-  transition: background-color 0.3s ease-out;
 }
 
 .if-notNew {
@@ -64,4 +63,10 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+  }
 }
