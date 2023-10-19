@@ -2,7 +2,7 @@ import "./footer.css";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
-import { AiFillYoutube } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 const Footer = () => {
   return (
     <div className="footer-content">
@@ -46,17 +46,33 @@ const Footer = () => {
       </div>
       <div className="socials">
         <p>Follow us</p>
-        <a href="">
+        <a
+          href="https://web.facebook.com/messages/t/100057301837801"
+          target="_blank"
+          rel="noreferrer"
+        >
           <BsFacebook />
         </a>
-        <a href="">
+        <a
+          href="https://twitter.com/EliscaKendy"
+          target="_blank"
+          rel="noreferrer"
+        >
           <AiFillTwitterCircle />
         </a>
-        <a href="">
+        <a
+          href="https://www.instagram.com/kendyelisca5/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <AiFillInstagram />
         </a>
-        <a href="">
-          <AiFillYoutube />
+        <a
+          href="https://github.com/Kendyelisca"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillGithub />
         </a>
       </div>
       <p className="rights">

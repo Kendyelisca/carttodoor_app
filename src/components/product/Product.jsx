@@ -15,7 +15,7 @@ const Product = (props) => {
       alert("You must log in to add products to the cart.");
       navigate("/login");
     } else {
-      alert(id);
+      alert(`Product ${id} added to the cart`);
     }
   };
 
