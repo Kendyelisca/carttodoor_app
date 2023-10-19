@@ -6,13 +6,31 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { UserContext } from "../../contexts/user-context";
+
 const Navbar = () => {
-  const { user } = useContext(UserContext) ?? {}; // Provide an empty object as a default
+  const { user, logout } = useContext(UserContext) ?? {}; // Provide an empty object as a default
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isLogoutDialogOpen, setLogoutDialogOpen] = useState(false); // State for the logout confirmation dialog
 
   // Function to toggle the menu
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
+  };
+
+  // Function to open the logout confirmation dialog
+  const openLogoutDialog = () => {
+    setLogoutDialogOpen(true);
+  };
+
+  // Function to close the logout confirmation dialog
+  const closeLogoutDialog = () => {
+    setLogoutDialogOpen(false);
+  };
+
+  // Function to handle the logout action
+  const handleLogOut = () => {
+    closeLogoutDialog(); // Close the confirmation dialog
+    logout(); // Logout the user
   };
 
   return (
@@ -51,19 +69,62 @@ const Navbar = () => {
       </nav>
       {isMenuOpen && (
         <div className="menu-options">
-          {user && user.userName && <li className="user">{user.userName}</li>}
-          <li>
-            <Link to="/aboutus">About Us</Link>
-          </li>
-          <li>
-            <Link to="/services">Services</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/account">Account</Link>
-          </li>
+          {user && user.userName ? (
+            <>
+              <li className="user">{user.userName}</li>
+              <li>
+                <Link to="/aboutus">About Us</Link>
+              </li>
+              <li>
+                <Link to="/services">Services</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/cart">
+                  <PiShoppingCart />
+                </Link>
+              </li>
+              <li>
+                <Link to="/account">Account</Link>
+              </li>
+              <li>
+                <button onClick={openLogoutDialog} className="logout-button">
+                  Logout
+                </button>{" "}
+                {/* Open the logout confirmation dialog */}
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/aboutus">About Us</Link>
+              </li>
+              <li>
+                <Link to="/services">Services</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link> {/* Display Login option */}
+              </li>
+            </>
+          )}
+        </div>
+      )}
+      {isLogoutDialogOpen && (
+        <div className="logout-dialog">
+          <div className="logout-content">
+            <p>Are you sure you want to logout?</p>
+            <button onClick={handleLogOut} className="logout-button-yes">
+              Yes
+            </button>
+            <button onClick={closeLogoutDialog} className="logout-button-no">
+              No
+            </button>
+          </div>
         </div>
       )}
     </div>
