@@ -9,7 +9,7 @@ const ProductList = () => {
   // Check if products are not available (e.g., empty array)
   if (products.length === 0) {
     return (
-      <div className="loader-container333">
+      <div className="loader-container">
         <div className="preloader">
           <svg
             className="cart"

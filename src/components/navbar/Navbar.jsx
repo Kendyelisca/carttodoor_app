@@ -42,6 +42,10 @@ const Navbar = () => {
           <CgProfile />
           {user && user.userName && <div className="user">{user.userName}</div>}
         </Link>
+        <div className="menu">
+          {" "}
+          <RxHamburgerMenu />
+        </div>
       </nav>
     </div>
   );
