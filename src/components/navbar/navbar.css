@@ -136,8 +136,8 @@ ul li a {
 @media (max-width: 768px) {
   nav {
     justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .navbar ul {
     display: none;
