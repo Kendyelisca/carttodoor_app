@@ -2,6 +2,7 @@ import { ShopContext } from "../../contexts/shop-context";
 import { useContext } from "react";
 import Product from "./Product";
 import "./productList.css";
+import SpecialOffers from "../slide-show/SpecialOffers";
 
 const ProductList = () => {
   const { products } = useContext(ShopContext);
@@ -74,6 +75,7 @@ const ProductList = () => {
 
   return (
     <div className="product-container">
+      <SpecialOffers />
       <div className="products">
         {products.map((product) => (
           <Product data={product} key={product.id} />

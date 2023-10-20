@@ -1,0 +1,59 @@
+
+
+
+.special-offers {
+ max-width: 80%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+/* Styling for the carousel */
+.carousel {
+  background: #e38c8c20;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for the offer image */
+.carousel img {
+  max-height: 200px; /* Adjust the image size as needed */
+  object-fit: cover;
+}
+
+
+/* Styling for the offer title/legend */
+.carousel .legend {
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* Styling for carousel navigation arrows */
+.carousel .control-dots {
+  display: none; /* Hide the default navigation dots */
+}
+
+/* Style the left and right navigation arrows (if needed) */
+.carousel .control-prev,
+.carousel .control-next {
+  background-color: var(--primary-color); /* Change to your preferred color */
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel .control-prev:hover,
+.carousel .control-next:hover {
+  background-color: var(
+    --primary-color
+  ); /* Change to a darker shade for hover effect */
+}
