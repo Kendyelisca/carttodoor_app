@@ -10,7 +10,7 @@
   /* flex-wrap: wrap; */
   /* gap: 100px; */
   grid-template-columns: repeat(3, 1fr);
-  margin-left: 40px;
+  margin-left: 60px;
   padding-right: 10px;
   gap: 25px;
 }
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding-left: 40px;
+  padding-left: 60px;
 }
 
 .socials a {
@@ -40,7 +40,7 @@
 }
 
 .rights {
-  padding-left: 40px;
+  padding-left: 60px;
   color: rgb(102, 102, 102);
 }
 
