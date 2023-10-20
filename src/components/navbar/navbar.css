@@ -4,8 +4,12 @@
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
   background-color: rgb(245, 246, 248);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .cart-1 {
@@ -41,6 +45,7 @@
   justify-content: center;
 }
 
+
 nav {
   display: flex;
   justify-content: space-around;
@@ -70,6 +75,11 @@ ul {
 ul li a {
   text-decoration: none;
   color: rgb(102, 102, 102);
+}
+ul li a:hover{
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .bar {
@@ -155,7 +165,8 @@ ul li a {
     height: 70px;
     justify-content: center;
     align-items: center;
-    font-size: 24px;;
+    font-size: 24px;
+    cursor: pointer;
   }
 
   /* Styles for the menu when it's open */

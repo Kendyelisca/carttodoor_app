@@ -5,6 +5,7 @@ import { PiShoppingCart } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
 import { FaTimes, FaBars } from "react-icons/fa";
+import { AiOutlineSearch } from "react-icons/ai";
 import { UserContext } from "../../contexts/user-context";
 
 const Navbar = () => {
@@ -54,6 +55,12 @@ const Navbar = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+          <div className="bar"></div>
+          <li className="search">
+            <Link>
+              <AiOutlineSearch />
+            </Link>
+          </li>
         </ul>
         <div className="cart-1">
           <Link to="/cart">
@@ -83,6 +90,11 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link>
+                  <AiOutlineSearch />
+                </Link>
               </li>
               <li>
                 <Link to="/cart">
