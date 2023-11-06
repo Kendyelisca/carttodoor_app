@@ -6,7 +6,7 @@ const Cart = () => {
     <>
       <div className="cart-container">
         <div>
-          <h1>Will be soon available</h1>
+          <h>Will be soon available</h>
         </div>
         <div className="tower">
           <div className="tower__group">
